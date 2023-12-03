@@ -3,22 +3,26 @@ import java.util.Objects;
 
 public abstract class Shape {
     protected String type;
+    protected String fill;
+    protected String stroke;
     protected int id;
     protected int x;
     protected int y;
-    protected String fill;
-
-
     public Shape() {
     }
-
-    public Shape(String type, int id, int x, int y, String fill) {
+    
+    public Shape(String type, int id, int x, int y, String fill, String stroke) {
         this.type = type;
         this.id = id;
         this.x = x;
         this.y = y;
         this.fill = fill;
+        this.stroke = stroke;
     }
+
+    // public copy(Shape shape) {
+    //     Shape shapeClone = shape.clone();
+    // }
 
     public String getType() {
         return this.type;
@@ -60,29 +64,12 @@ public abstract class Shape {
         this.fill = fill;
     }
 
-    public Shape type(String type) {
-        setType(type);
-        return this;
+    public String getStroke() {
+        return this.stroke;
     }
 
-    public Shape id(int id) {
-        setId(id);
-        return this;
-    }
-
-    public Shape x(int x) {
-        setX(x);
-        return this;
-    }
-
-    public Shape y(int y) {
-        setY(y);
-        return this;
-    }
-
-    public Shape fill(String fill) {
-        setFill(fill);
-        return this;
+    public void setStroke(String stroke) {
+        this.stroke = stroke;
     }
 
     @Override
@@ -93,12 +80,12 @@ public abstract class Shape {
             return false;
         }
         Shape shape = (Shape) o;
-        return Objects.equals(type, shape.type) && id == shape.id && x == shape.x && y == shape.y && Objects.equals(fill, shape.fill);
+        return Objects.equals(type, shape.type) && id == shape.id && x == shape.x && y == shape.y && Objects.equals(fill, shape.fill) && Objects.equals(stroke, shape.stroke);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, id, x, y, fill);
+        return Objects.hash(type, id, x, y, fill, stroke);
     }
 
     @Override
@@ -109,7 +96,9 @@ public abstract class Shape {
             ", x='" + getX() + "'" +
             ", y='" + getY() + "'" +
             ", fill='" + getFill() + "'" +
+            ", stroke='" + getStroke() + "'" +
             "}";
     }
-    
+
+
 }

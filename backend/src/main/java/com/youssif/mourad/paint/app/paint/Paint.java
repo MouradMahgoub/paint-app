@@ -7,6 +7,7 @@ import com.youssif.mourad.paint.app.paint.shapes.Shape;
 import java.util.Objects;
 
 public class Paint {
+    private int id;
     private List<Shape> shapes = new ArrayList<>();
 
     public Paint() {
@@ -16,12 +17,24 @@ public class Paint {
         this.shapes = shapes;
     }
 
+    public void addShape(Shape shape){
+        this.shapes.add(shape);
+    }
+
     public List<Shape> getShapes() {
         return this.shapes;
     }
 
     public void setShapes(List<Shape> shapes) {
         this.shapes = shapes;
+    }
+
+    public int getId() {
+        return this.id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Paint shapes(List<Shape> shapes) {
