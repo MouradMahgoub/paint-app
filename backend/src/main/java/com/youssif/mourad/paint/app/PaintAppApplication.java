@@ -5,8 +5,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class PaintAppApplication {
-//testcf
-//testcdffdcfjdckjf
 	public static void main(String[] args) {
 		SpringApplication.run(PaintAppApplication.class, args);
 	}
