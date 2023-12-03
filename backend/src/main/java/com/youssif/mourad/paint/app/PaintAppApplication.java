@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PaintAppApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PaintAppApplication.class, args);
+		//mm
 	}
 
 }
