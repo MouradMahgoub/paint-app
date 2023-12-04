@@ -17,10 +17,6 @@ public class Paint {
         this.shapes = shapes;
     }
 
-    public void addShape(Shape shape){
-        this.shapes.add(shape);
-    }
-
     public List<Shape> getShapes() {
         return this.shapes;
     }

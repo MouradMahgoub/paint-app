@@ -1,7 +1,6 @@
 package com.youssif.mourad.paint.app.paint.shapes;
 
 import lombok.Builder;
-import lombok.Getter;
 
 
 public class Circle extends Shape{

@@ -10,7 +10,6 @@ public abstract class Shape {
     protected int x;
     protected int y;
 
-
     public Shape() {
     }
     
@@ -23,31 +22,9 @@ public abstract class Shape {
         this.stroke = stroke;
     }
 
-    public Shape draw(Shape shape) {
-        return shape;
+    public Shape clone() throws CloneNotSupportedException {
+        return (Shape) super.clone();
     }
-
-    // public copy(Shape shape) {
-    //     Shape shapeClone = shape.clone();
-    // }
-
-    // public move() {
-
-    // }
-    
-    // public resize() {
-
-    // }
-
-    // public refill() {
-
-    // }
-
-    // public delete() {
-
-    // }
-
-
 
     public String getType() {
         return this.type;

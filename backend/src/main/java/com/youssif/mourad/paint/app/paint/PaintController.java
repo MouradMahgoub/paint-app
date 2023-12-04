@@ -1,7 +1,6 @@
 package com.youssif.mourad.paint.app.paint;
 
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,8 +17,28 @@ public class PaintController {
     @Autowired
     private PaintService paintService;
     
-    @PostMapping("/create")
-    public List<Shape> create(@RequestBody Map<String, Object> properties) {
-        return paintService.create(properties);
+    @PostMapping("/draw")
+    public List<Shape> draw(@RequestBody RequestObject requestObject) {
+        return paintService.draw(requestObject.createShape());
+    }
+    @PostMapping("/move")
+    public List<Shape> move(@RequestBody RequestObject requestObject) {
+        return paintService.move(requestObject.createShape());
+    }
+    @PostMapping("/delete")
+    public List<Shape> delete(@RequestBody RequestObject requestObject) {
+        return paintService.delete(requestObject.createShape());
+    }
+    @PostMapping("/resize")
+    public List<Shape> resize(@RequestBody RequestObject requestObject) {
+        return paintService.resize(requestObject.createShape());
+    }
+    @PostMapping("/refill")
+    public List<Shape> refill(@RequestBody RequestObject requestObject) {
+        return paintService.refill(requestObject.createShape());
+    }
+    @PostMapping("/copy")
+    public List<Shape> copy(@RequestBody RequestObject requestObject) {
+        return paintService.copy(requestObject.createShape());
     }
 }
