@@ -1,6 +1,7 @@
 package com.youssif.mourad.paint.app.paint.shapes;
 import java.util.Objects;
 
+
 public abstract class Shape {
     protected String type;
     protected String fill;
@@ -8,6 +9,8 @@ public abstract class Shape {
     protected int id;
     protected int x;
     protected int y;
+
+
     public Shape() {
     }
     
@@ -20,9 +23,31 @@ public abstract class Shape {
         this.stroke = stroke;
     }
 
+    public Shape draw(Shape shape) {
+        return shape;
+    }
+
     // public copy(Shape shape) {
     //     Shape shapeClone = shape.clone();
     // }
+
+    // public move() {
+
+    // }
+    
+    // public resize() {
+
+    // }
+
+    // public refill() {
+
+    // }
+
+    // public delete() {
+
+    // }
+
+
 
     public String getType() {
         return this.type;
