@@ -14,4 +14,11 @@ public class Square extends Shape{
         this.sideLength = sideLength;
     }
 
+    public int getSideLength() {
+        return this.sideLength;
+    }
+
+    public void setSideLength(int sideLength) {
+        this.sideLength = sideLength;
+    }
 }

@@ -13,4 +13,12 @@ public class Line extends Shape{
         super(type, id, x, y, fill, stroke);
     }
 
+    public int getLength() {
+        return this.length;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
+    }
+
 }
