@@ -2,7 +2,7 @@ package com.youssif.mourad.paint.app.paint.shapes;
 import java.util.Objects;
 
 
-public abstract class Shape {
+public abstract class Shape implements Cloneable{
     protected String type;
     protected String fill;
     protected String stroke;
@@ -22,6 +22,7 @@ public abstract class Shape {
         this.stroke = stroke;
     }
 
+    @Override
     public Shape clone() throws CloneNotSupportedException {
         return (Shape) super.clone();
     }

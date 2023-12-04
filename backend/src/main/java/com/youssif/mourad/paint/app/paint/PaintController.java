@@ -38,7 +38,15 @@ public class PaintController {
         return paintService.refill(requestObject.createShape());
     }
     @PostMapping("/copy")
-    public List<Shape> copy(@RequestBody RequestObject requestObject) {
+    public List<Shape> copy(@RequestBody RequestObject requestObject) throws CloneNotSupportedException {
         return paintService.copy(requestObject.createShape());
     }
+    // @PostMapping("/undo")
+    // public List<Shape> undo(@RequestBody RequestObject requestObject) {
+    //     return paintService.undo(requestObject.createShape());
+    // }
+    // @PostMapping("/redo")
+    // public List<Shape> redo(@RequestBody RequestObject requestObject) {
+    //     return paintService.redo(requestObject.createShape());
+    // }
 }

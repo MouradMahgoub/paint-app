@@ -14,8 +14,13 @@ public class PaintService {
         currentPaint.getShapes().add(shape);
         return currentPaint.getShapes();
     }
-    List<Shape> copy(Shape shape) {
-        // Shape clonedShape = 
+    List<Shape> copy(Shape shape) throws CloneNotSupportedException {
+        Shape clonedShape = shape.clone();
+        int cloneedShapeId = 0;
+        for(Shape targetShape : currentPaint.getShapes())
+            cloneedShapeId = Math.max(cloneedShapeId, targetShape.getId());
+        clonedShape.setId(cloneedShapeId + 1);
+        currentPaint.getShapes().add(clonedShape);
         return currentPaint.getShapes();
     }
     List<Shape> move(Shape shape) {
@@ -51,4 +56,11 @@ public class PaintService {
         currentPaint.getShapes().remove(shape);
         return currentPaint.getShapes();
     }
+    // List<Shape> undo() {
+
+    // }
+    // List<Shape> redo() {
+
+    // }
+
 }

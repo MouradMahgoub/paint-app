@@ -36,8 +36,8 @@ public class ShapeFactory {
                                             .build();
                 break;
                 case "triangle" : shape = new Triangle().builder()
-                                             .sideLength((int)properties.get("sideLength"))
-                                             .build();
+                                            .sideLength((int)properties.get("sideLength"))
+                                            .build();
                 break;
                 default: return null;
             }
