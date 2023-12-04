@@ -4,21 +4,13 @@ import lombok.Builder;
 
 public class Line extends Shape{
 
-    int length;
+    protected int length;
     
     public Line(){}
 
     @Builder
-    Line(String type, int id, int x, int y, String fill, String stroke) {
+    Line(String type, int id, int x, int y, String fill, String stroke,int length) {
         super(type, id, x, y, fill, stroke);
+        this.length=length;
     }
-
-    public int getLength() {
-        return this.length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
 }
