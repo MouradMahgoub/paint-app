@@ -1,23 +1,24 @@
 package com.youssif.mourad.paint.app.paint.shapes;
 
 import lombok.Builder;
+import lombok.Getter;
 
 public class Ellipse extends Shape{
 
-    int radiusX;
-    int radiusY;
+    protected int radiusX;
+    protected int radiusY;
 
     public Ellipse(){}
 
     @Builder
-    Ellipse(String type, int id, int x, int y, String fill, String stroke, int radiusX, int radiusY) {
+    Ellipse(String type, int id, int x, int y, String fill, String stroke,int radiusX,int radiusY) {
         super(type, id, x, y, fill, stroke);
-        this.radiusX = radiusX;
-        this.radiusY = radiusY;
+        this.radiusX=radiusX;
+        this.radiusY=radiusY;
     }
 
     public int getRadiusX() {
-        return this.radiusX;
+        return radiusX;
     }
 
     public void setRadiusX(int radiusX) {
@@ -25,7 +26,7 @@ public class Ellipse extends Shape{
     }
 
     public int getRadiusY() {
-        return this.radiusY;
+        return radiusY;
     }
 
     public void setRadiusY(int radiusY) {

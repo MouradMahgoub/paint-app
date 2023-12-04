@@ -35,7 +35,9 @@ public class ShapeFactory {
                                             .radiusY((int)properties.get("radiusY"))
                                             .build();
                 break;
-                case "triangle" : shape = new Triangle();
+                case "triangle" : shape = new Triangle().builder()
+                                             .sideLength((int)properties.get("sideLength"))
+                                             .build();
                 break;
                 default: return null;
             }
