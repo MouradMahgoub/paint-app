@@ -16,20 +16,7 @@ public class PaintService {
     private Paint currentPaint = new Paint();
     
     List<Shape> create(Map<String, Object> properties) {
-        String type = properties.get("type").toString();
-        switch(type){
-            case "circle" : currentPaint.addShape(new CircleFactory().create(properties));
-            break;
-            case "square" :
-            break;
-            case "rectangle" :
-            break;
-            case "ellipse" :
-            break;
-            case "triangle" :
-            break;
-            default : return currentPaint.getShapes();
-        }
+        
         return currentPaint.getShapes();
     }
     // List<Shape> copy() {
