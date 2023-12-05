@@ -8,8 +8,8 @@ import com.youssif.mourad.paint.app.paint.Paint;
 
 public class JsonFileHandler {
     public void saveAsJsonFile(Paint paint, String path) throws IOException{
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writeValue(new File(path), paint);
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(new File(path), paint);
     }
 
     

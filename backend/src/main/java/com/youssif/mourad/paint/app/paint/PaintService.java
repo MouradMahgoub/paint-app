@@ -62,5 +62,11 @@ public class PaintService {
     // List<Shape> redo() {
 
     // }
+    // List<Shape> save() {
+
+    // }
+    // List<Shape> load() {
+
+    // }
 
 }
