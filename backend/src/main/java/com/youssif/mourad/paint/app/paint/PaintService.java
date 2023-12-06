@@ -1,5 +1,6 @@
 package com.youssif.mourad.paint.app.paint;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -72,25 +73,37 @@ public class PaintService {
     // List<Shape> redo() {
 
     // }
-    // @Scope("save")
-    List<Shape> save(RequestObject requestObject) throws IOException, JAXBException {
+    List<Shape> save(PaintInfo paintInfo) throws Exception {
+        // String name = requestObject.getProperties().get("name").toString();
+        // String type = requestObject.getProperties().get("type").toString();
+        // String path = requestObject.getProperties().get("path").toString();
+        List<PaintInfo> paintsInfo = new ArrayList<PaintInfo>();
+        if((new File("C:\\Users\\mourad mahgoub\\OneDrive\\Desktop\\OOP\\paint-app\\backend\\src\\main\\resources\\paintInfo.json")).length() > 0) 
+            paintsInfo = JsonFileHandler.loadInfo();
+        paintsInfo.add(paintInfo);
+        JsonFileHandler.saveInfo(paintsInfo);
+
+        if(paintInfo.getType().toString().toLowerCase().equals("json")){
+            JsonFileHandler.save(currentPaint, paintInfo.getPath().toString());
+            return currentPaint.getShapes(); 
+        }else{
+            XmlFileHandler.save(currentPaint, paintInfo.getPath().toString());
+            return currentPaint.getShapes();
+        }
+    }
+    List<Shape> load(RequestObject requestObject) throws Exception {
         String type = requestObject.getProperties().get("type").toString();
         String path = requestObject.getProperties().get("path").toString();
         if(type.toLowerCase().equals("json")){
-            // JsonFileHandler jsonFileHandler = new JsonFileHandler();
-            JsonFileHandler.save(currentPaint, path);
+            currentPaint = JsonFileHandler.load(path);
             return currentPaint.getShapes(); 
         }else{
-            // XmlFileHandler xmlFileHandler = new XmlFileHandler();
-            XmlFileHandler.save(currentPaint, path);
+            currentPaint = XmlFileHandler.load(path);
             return currentPaint.getShapes();
         }
-        // return this.currentPaint.getShapes();
     }
-    List<Shape> load(String path) throws IOException {
-        JsonFileHandler jsonFileHandler = new JsonFileHandler();
-        currentPaint = jsonFileHandler.load(path);
-        return this.currentPaint.getShapes();
+    List<PaintInfo> loadInfo () throws IOException {
+        return JsonFileHandler.loadInfo();
     }
 
 

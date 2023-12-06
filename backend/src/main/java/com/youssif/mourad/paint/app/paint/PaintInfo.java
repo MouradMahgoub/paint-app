@@ -1,23 +1,19 @@
 package com.youssif.mourad.paint.app.paint;
-
-import javax.xml.bind.annotation.XmlRootElement;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
-@XmlRootElement
-public class Paint {
+public class PaintInfo {
+    
     private String name;
     private String path;
-    private List<Shape> Shapes = new ArrayList<Shape>();
+    private String type;
 
-    public Paint() {
+    public PaintInfo() {
     }
 
-    public Paint(String name, String path, List<Shape> Shapes) {
+    public PaintInfo(String name, String path, String type) {
         this.name = name;
         this.path = path;
-        this.Shapes = Shapes;
+        this.type = type;
     }
 
     public String getName() {
@@ -36,26 +32,26 @@ public class Paint {
         this.path = path;
     }
 
-    public List<Shape> getShapes() {
-        return this.Shapes;
+    public String getType() {
+        return this.type;
     }
 
-    public void setShapes(List<Shape> Shapes) {
-        this.Shapes = Shapes;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public Paint name(String name) {
+    public PaintInfo name(String name) {
         setName(name);
         return this;
     }
 
-    public Paint path(String path) {
+    public PaintInfo path(String path) {
         setPath(path);
         return this;
     }
 
-    public Paint Shapes(List<Shape> Shapes) {
-        setShapes(Shapes);
+    public PaintInfo type(String type) {
+        setType(type);
         return this;
     }
 
@@ -63,16 +59,16 @@ public class Paint {
     public boolean equals(Object o) {
         if (o == this)
             return true;
-        if (!(o instanceof Paint)) {
+        if (!(o instanceof PaintInfo)) {
             return false;
         }
-        Paint paint = (Paint) o;
-        return Objects.equals(name, paint.name) && Objects.equals(path, paint.path) && Objects.equals(Shapes, paint.Shapes);
+        PaintInfo paintInfo = (PaintInfo) o;
+        return Objects.equals(name, paintInfo.name) && Objects.equals(path, paintInfo.path) && Objects.equals(type, paintInfo.type);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, path, Shapes);
+        return Objects.hash(name, path, type);
     }
 
     @Override
@@ -80,9 +76,7 @@ public class Paint {
         return "{" +
             " name='" + getName() + "'" +
             ", path='" + getPath() + "'" +
-            ", Shapes='" + getShapes() + "'" +
+            ", type='" + getType() + "'" +
             "}";
     }
-
-    
 }

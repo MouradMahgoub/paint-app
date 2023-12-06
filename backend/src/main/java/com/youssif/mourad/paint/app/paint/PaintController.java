@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class PaintController {
     
     @Autowired
-    private PaintService paintService = new PaintService();
+    private PaintService paintService;
     
     @PostMapping("/draw")
     public List<Shape> draw(@RequestBody RequestObject requestObject) {
@@ -61,15 +61,15 @@ public class PaintController {
     //     return paintService.load();
     // }
     @PostMapping("/save")
-    public List<Shape> save(@RequestBody RequestObject requestObject) throws IOException, JAXBException {
-        return paintService.save(requestObject);
+    public List<Shape> save(@RequestBody PaintInfo paintInfo) throws Exception {
+        return paintService.save(paintInfo);
     }
-    // @PostMapping("/load/info")
-    // public List<Shape> load(@RequestBody RequestObject requestObject) {
-    //     return paintService.load(requestObject.getProperties().get("path"));
-    // }
+    @GetMapping("/load/info")
+    public List<PaintInfo> load() throws IOException {
+        return paintService.loadInfo();
+    }
     @PostMapping("/load/paint")
-    public List<Shape> load(@RequestBody RequestObject requestObject) throws IOException {
-        return paintService.load(requestObject.getProperties().get("path").toString());
+    public List<Shape> load(@RequestBody RequestObject requestObject) throws Exception {
+        return paintService.load(requestObject);
     }
 }
