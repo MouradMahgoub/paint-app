@@ -72,5 +72,26 @@ public class PaintService {
     // List<Shape> redo() {
 
     // }
+    // @Scope("save")
+    List<Shape> save(RequestObject requestObject) throws IOException, JAXBException {
+        String type = requestObject.getProperties().get("type").toString();
+        String path = requestObject.getProperties().get("path").toString();
+        if(type.toLowerCase().equals("json")){
+            // JsonFileHandler jsonFileHandler = new JsonFileHandler();
+            JsonFileHandler.save(currentPaint, path);
+            return currentPaint.getShapes(); 
+        }else{
+            // XmlFileHandler xmlFileHandler = new XmlFileHandler();
+            return XmlFileHandler.save(currentPaint, path);
+        }
+        // return this.currentPaint.getShapes();
+    }
+    List<Shape> load(String path) throws IOException {
+        JsonFileHandler jsonFileHandler = new JsonFileHandler();
+        currentPaint = jsonFileHandler.load(path);
+        return this.currentPaint.getShapes();
+    }
+
+
 
 }

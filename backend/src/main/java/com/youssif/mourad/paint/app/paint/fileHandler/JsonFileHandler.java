@@ -13,10 +13,18 @@ import com.youssif.mourad.paint.app.paint.Shape;
 import com.youssif.mourad.paint.app.paint.factory.ShapeFactory;
 
 public class JsonFileHandler {
-    public void saveAsJsonFile(Paint paint, String path) throws IOException{
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.writeValue(new File(path), paint);
+    public static void save(Paint paint, String path) throws IOException{
+        ObjectMapper mapper = new ObjectMapper();
+        mapper.writeValue(new File(path), paint);
     }
 
-    
+    public static Paint load(String path) throws IOException{
+        ObjectMapper objectMapper = new ObjectMapper();
+        Paint currentPaint = objectMapper.readValue(new File(path), new TypeReference<Paint>() {});
+        ShapeFactory shapeFactory = new ShapeFactory();
+        // List<Shape> paint = new ArrayList<Shape>();
+        // for(Map<String, Object> properties : shapes)
+        //     paint.add(shapeFactory.create(properties));
+        return currentPaint; 
+    }
 }
