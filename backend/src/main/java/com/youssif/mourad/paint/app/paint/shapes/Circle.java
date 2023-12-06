@@ -12,8 +12,8 @@ public class Circle extends Shape{
     public Circle(){};
 
     @Builder
-    Circle(String type, int id, int x, int y, String fill, String stroke, int radius, boolean draggable) {
-        super(type, id, x, y, fill, stroke, draggable);
+    Circle(String type, int id, int x, int y, String fill, String stroke, int radius,boolean draggable) {
+        super(type, id, x, y, fill, stroke,draggable);
         this.radius = radius;
     }
 

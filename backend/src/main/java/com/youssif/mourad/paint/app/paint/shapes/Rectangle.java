@@ -7,14 +7,14 @@ import lombok.Builder;
 public class Rectangle extends Shape{
 
     int width;
-    int hight;
+    int height;
 
     public Rectangle(){}
 
     @Builder
-    Rectangle(String type, int id, int x, int y, String fill, String stroke, boolean draggable, int hight, int width) {
-        super(type, id, x, y, fill, stroke, draggable);
-        this.hight = hight;
+    Rectangle(String type, int id, int x, int y, String fill, String stroke, int height, int width,boolean draggable) {
+        super(type, id, x, y, fill, stroke,draggable);
+        this.height = height;
         this.width = width;
     }
 
@@ -26,12 +26,12 @@ public class Rectangle extends Shape{
         this.width = width;
     }
 
-    public int getHight() {
-        return this.hight;
+    public int getHeight() {
+        return this.height;
     }
 
-    public void setHight(int hight) {
-        this.hight = hight;
+    public void setHeight(int hight) {
+        this.height = hight;
     }
 
 }

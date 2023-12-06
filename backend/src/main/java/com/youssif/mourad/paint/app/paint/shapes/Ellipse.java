@@ -12,8 +12,8 @@ public class Ellipse extends Shape{
     public Ellipse(){}
 
     @Builder
-    Ellipse(String type, int id, int x, int y, String fill, String stroke,int radiusX,int radiusY, boolean draggable) {
-        super(type, id, x, y, fill, stroke, draggable);
+    Ellipse(String type, int id, int x, int y, String fill, String stroke,int radiusX,int radiusY,boolean draggable) {
+        super(type, id, x, y, fill, stroke,draggable);
         this.radiusX=radiusX;
         this.radiusY=radiusY;
     }

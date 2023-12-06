@@ -77,6 +77,14 @@ public abstract class Shape implements Cloneable{
         this.stroke = stroke;
     }
 
+    public boolean isDraggable() {
+        return draggable;
+    }
+
+    public void setDraggable(boolean draggable) {
+        this.draggable = draggable;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -85,24 +93,25 @@ public abstract class Shape implements Cloneable{
             return false;
         }
         Shape shape = (Shape) o;
-        return Objects.equals(type, shape.type) && id == shape.id && x == shape.x && y == shape.y && Objects.equals(fill, shape.fill) && Objects.equals(stroke, shape.stroke);
+        return Objects.equals(type, shape.type) && id == shape.id && x == shape.x && y == shape.y && Objects.equals(fill, shape.fill) && Objects.equals(stroke, shape.stroke) && draggable==shape.draggable;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(type, id, x, y, fill, stroke);
+        return Objects.hash(type, id, x, y, fill, stroke,draggable);
     }
 
     @Override
     public String toString() {
         return "{" +
-            " type='" + getType() + "'" +
-            ", id='" + getId() + "'" +
-            ", x='" + getX() + "'" +
-            ", y='" + getY() + "'" +
-            ", fill='" + getFill() + "'" +
-            ", stroke='" + getStroke() + "'" +
-            "}";
+                " type='" + getType() + "'" +
+                ", id='" + getId() + "'" +
+                ", x='" + getX() + "'" +
+                ", y='" + getY() + "'" +
+                ", fill='" + getFill() + "'" +
+                ", draggable='" + isDraggable() + "'" +
+                ", stroke='" + getStroke() + "'" +
+                "}";
     }
 
 
