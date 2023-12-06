@@ -1,5 +1,7 @@
 package com.youssif.mourad.paint.app.paint.shapes;
 
+import com.youssif.mourad.paint.app.paint.Shape;
+
 import lombok.Builder;
 
 public class Square extends Shape{
@@ -9,8 +11,8 @@ public class Square extends Shape{
     public Square(){}
 
     @Builder
-    Square(String type, int id, int x, int y, String fill, String stroke, int sideLength) {
-        super(type, id, x, y, fill, stroke);
+    Square(String type, int id, int x, int y, String fill, String stroke, boolean draggable, int sideLength) {
+        super(type, id, x, y, fill, stroke, draggable);
         this.sideLength = sideLength;
     }
 

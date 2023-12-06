@@ -1,15 +1,25 @@
 package com.youssif.mourad.paint.app.paint;
 
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.annotation.XmlSeeAlso;
+
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
-import com.youssif.mourad.paint.app.paint.shapes.Shape;
+
+import com.youssif.mourad.paint.app.paint.fileHandler.JsonFileHandler;
+import com.youssif.mourad.paint.app.paint.fileHandler.XmlFileHandler;
 
 @Service
+@XmlSeeAlso({ArrayList.class, LinkedList.class})
 public class PaintService {
     
     private Paint currentPaint = new Paint();
-
+    
     List<Shape> draw(Shape shape) {
         currentPaint.getShapes().add(shape);
         return currentPaint.getShapes();
@@ -60,12 +70,6 @@ public class PaintService {
 
     // }
     // List<Shape> redo() {
-
-    // }
-    // List<Shape> save() {
-
-    // }
-    // List<Shape> load() {
 
     // }
 

@@ -1,5 +1,7 @@
 package com.youssif.mourad.paint.app.paint.shapes;
 
+import com.youssif.mourad.paint.app.paint.Shape;
+
 import lombok.Builder;
 
 public class Ellipse extends Shape{
@@ -10,8 +12,8 @@ public class Ellipse extends Shape{
     public Ellipse(){}
 
     @Builder
-    Ellipse(String type, int id, int x, int y, String fill, String stroke,int radiusX,int radiusY) {
-        super(type, id, x, y, fill, stroke);
+    Ellipse(String type, int id, int x, int y, String fill, String stroke,int radiusX,int radiusY, boolean draggable) {
+        super(type, id, x, y, fill, stroke, draggable);
         this.radiusX=radiusX;
         this.radiusY=radiusY;
     }

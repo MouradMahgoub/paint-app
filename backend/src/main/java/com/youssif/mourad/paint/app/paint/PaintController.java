@@ -1,21 +1,24 @@
 package com.youssif.mourad.paint.app.paint;
 
+import java.io.IOException;
 import java.util.List;
+import java.util.ArrayList;
+
+import javax.xml.bind.JAXBException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.youssif.mourad.paint.app.paint.shapes.Shape;
 
 @RestController
 @RequestMapping
 public class PaintController {
     
     @Autowired
-    private PaintService paintService;
+    private PaintService paintService = new PaintService();
     
     @PostMapping("/draw")
     public List<Shape> draw(@RequestBody RequestObject requestObject) {
@@ -57,4 +60,16 @@ public class PaintController {
     // public List<Shape> load() {
     //     return paintService.load();
     // }
+    @PostMapping("/save")
+    public List<Shape> save(@RequestBody RequestObject requestObject) throws IOException, JAXBException {
+        return paintService.save(requestObject);
+    }
+    // @PostMapping("/load/info")
+    // public List<Shape> load(@RequestBody RequestObject requestObject) {
+    //     return paintService.load(requestObject.getProperties().get("path"));
+    // }
+    @PostMapping("/load/paint")
+    public List<Shape> load(@RequestBody RequestObject requestObject) throws IOException {
+        return paintService.load(requestObject.getProperties().get("path").toString());
+    }
 }

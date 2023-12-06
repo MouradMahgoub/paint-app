@@ -2,9 +2,9 @@ package com.youssif.mourad.paint.app.paint.factory;
 
 import java.util.Map;
 
+import com.youssif.mourad.paint.app.paint.Shape;
 import com.youssif.mourad.paint.app.paint.shapes.Circle;
 import com.youssif.mourad.paint.app.paint.shapes.Rectangle;
-import com.youssif.mourad.paint.app.paint.shapes.Shape;
 import com.youssif.mourad.paint.app.paint.shapes.Square;
 import com.youssif.mourad.paint.app.paint.shapes.Triangle;
 import com.youssif.mourad.paint.app.paint.shapes.Ellipse;

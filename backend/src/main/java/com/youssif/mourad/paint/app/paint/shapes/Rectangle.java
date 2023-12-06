@@ -1,5 +1,7 @@
 package com.youssif.mourad.paint.app.paint.shapes;
 
+import com.youssif.mourad.paint.app.paint.Shape;
+
 import lombok.Builder;
 
 public class Rectangle extends Shape{
@@ -10,8 +12,8 @@ public class Rectangle extends Shape{
     public Rectangle(){}
 
     @Builder
-    Rectangle(String type, int id, int x, int y, String fill, String stroke, int hight, int width) {
-        super(type, id, x, y, fill, stroke);
+    Rectangle(String type, int id, int x, int y, String fill, String stroke, boolean draggable, int hight, int width) {
+        super(type, id, x, y, fill, stroke, draggable);
         this.hight = hight;
         this.width = width;
     }
