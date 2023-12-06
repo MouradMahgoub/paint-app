@@ -2,9 +2,6 @@ package com.youssif.mourad.paint.app.paint;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.ArrayList;
-
-import javax.xml.bind.JAXBException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -52,24 +49,16 @@ public class PaintController {
     // public List<Shape> redo() {
     //     return paintService.redo();
     // }
-    // @GetMapping("/save")
-    // public List<Shape> save() {
-    //     return paintService.save();
-    // }
-    // @GetMapping("/load")
-    // public List<Shape> load() {
-    //     return paintService.load();
-    // }
     @PostMapping("/save")
     public List<Shape> save(@RequestBody PaintInfo paintInfo) throws Exception {
         return paintService.save(paintInfo);
     }
     @GetMapping("/load/info")
-    public List<PaintInfo> load() throws IOException {
+    public List<PaintInfo> loadInfo() throws IOException {
         return paintService.loadInfo();
     }
     @PostMapping("/load/paint")
-    public List<Shape> load(@RequestBody RequestObject requestObject) throws Exception {
-        return paintService.load(requestObject);
+    public List<Shape> load(@RequestBody PaintInfo paintInfo) throws Exception {
+        return paintService.load(paintInfo);
     }
 }

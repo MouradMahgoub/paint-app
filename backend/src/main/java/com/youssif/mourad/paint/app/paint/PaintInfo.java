@@ -3,9 +3,9 @@ import java.util.Objects;
 
 public class PaintInfo {
     
-    private String name;
-    private String path;
-    private String type;
+    private String name = "";
+    private String path = "";
+    private String type = "json";
 
     public PaintInfo() {
     }

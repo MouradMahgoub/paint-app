@@ -27,17 +27,17 @@ public class JsonFileHandler {
         List<Map<String, Object>> shapes =  (List<Map<String, Object>>)paintObject.get("shapes");
         for(Map<String, Object> properties : shapes)
             paint.getShapes().add(shapeFactory.create(properties));
-        paint.setName(paintObject.get("name").toString());
-        paint.setPath(paintObject.get("path").toString());
+        // paint.setName(paintObject.get("name").toString());
+        // paint.setPath(paintObject.get("path").toString());
         return paint; 
     }
 
-    public static void saveInfo(List<PaintInfo> paintsInfo) throws IOException{
+    public static void saveInfo(List<PaintInfo> paintsInfo, String paintInfoPath) throws IOException{
     ObjectMapper objectMapper = new ObjectMapper();
-    objectMapper.writeValue(new File("C:\\Users\\mourad mahgoub\\OneDrive\\Desktop\\OOP\\paint-app\\backend\\src\\main\\resources\\paintInfo.json"), paintsInfo);
+    objectMapper.writeValue(new File(paintInfoPath), paintsInfo);
     }
-    public static List<PaintInfo> loadInfo() throws IOException{
+    public static List<PaintInfo> loadInfo(String paintInfoPath) throws IOException{
     ObjectMapper objectMapper = new ObjectMapper();
-    return objectMapper.readValue(new File("C:\\Users\\mourad mahgoub\\OneDrive\\Desktop\\OOP\\paint-app\\backend\\src\\main\\resources\\paintInfo.json"), new TypeReference<List<PaintInfo>>() {});
+    return objectMapper.readValue(new File(paintInfoPath), new TypeReference<List<PaintInfo>>() {});
     }
 }

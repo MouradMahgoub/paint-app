@@ -1,5 +1,55 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <paint>
    <Shapes class="java.util.ArrayList">
+      <shape class="com.youssif.mourad.paint.app.paint.shapes.Circle">
+         <type>circle</type>
+         <fill>blue</fill>
+         <stroke>black</stroke>
+         <id>5</id>
+         <x>110</x>
+         <y>150</y>
+         <draggable>false</draggable>
+         <radius>50</radius>
+      </shape>
+      <shape class="com.youssif.mourad.paint.app.paint.shapes.Circle">
+         <type>circle</type>
+         <fill>blue</fill>
+         <stroke>black</stroke>
+         <id>5</id>
+         <x>110</x>
+         <y>150</y>
+         <draggable>false</draggable>
+         <radius>50</radius>
+      </shape>
+      <shape class="com.youssif.mourad.paint.app.paint.shapes.Circle">
+         <type>circle</type>
+         <fill>blue</fill>
+         <stroke>black</stroke>
+         <id>5</id>
+         <x>110</x>
+         <y>150</y>
+         <draggable>false</draggable>
+         <radius>50</radius>
+      </shape>
+      <shape class="com.youssif.mourad.paint.app.paint.shapes.Circle">
+         <type>circle</type>
+         <fill>blue</fill>
+         <stroke>black</stroke>
+         <id>5</id>
+         <x>110</x>
+         <y>150</y>
+         <draggable>false</draggable>
+         <radius>50</radius>
+      </shape>
+      <shape class="com.youssif.mourad.paint.app.paint.shapes.Circle">
+         <type>circle</type>
+         <fill>blue</fill>
+         <stroke>black</stroke>
+         <id>5</id>
+         <x>110</x>
+         <y>150</y>
+         <draggable>false</draggable>
+         <radius>50</radius>
+      </shape>
    </Shapes>
 </paint>
