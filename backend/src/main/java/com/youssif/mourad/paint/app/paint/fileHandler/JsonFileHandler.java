@@ -21,7 +21,7 @@ public class JsonFileHandler {
     public static Paint load(String path) throws IOException{
         ObjectMapper objectMapper = new ObjectMapper();
         Paint currentPaint = objectMapper.readValue(new File(path), new TypeReference<Paint>() {});
-        ShapeFactory shapeFactory = new ShapeFactory();
+        // ShapeFactory shapeFactory = new ShapeFactory();
         // List<Shape> paint = new ArrayList<Shape>();
         // for(Map<String, Object> properties : shapes)
         //     paint.add(shapeFactory.create(properties));

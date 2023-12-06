@@ -82,7 +82,8 @@ public class PaintService {
             return currentPaint.getShapes(); 
         }else{
             // XmlFileHandler xmlFileHandler = new XmlFileHandler();
-            return XmlFileHandler.save(currentPaint, path);
+            XmlFileHandler.save(currentPaint, path);
+            return currentPaint.getShapes();
         }
         // return this.currentPaint.getShapes();
     }
