@@ -1,0 +1,22 @@
+{
+  "allShapes": [
+    {
+        "x":10,
+        "y":10,
+        "fill":"black",
+        "stroke": "black",
+        "points": [
+          414.93329365990127,
+          134.26665436975844,
+          548.9332811350771,
+          478.2666332893443
+        ],
+        "strokeWidth": 2,
+        "draggable": false,
+        "id": 1,
+        "type": "line"
+      
+    }
+   
+  ]
+}

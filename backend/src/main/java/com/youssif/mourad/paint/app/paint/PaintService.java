@@ -20,7 +20,7 @@ public class PaintService {
     private Stack<List<Shape>> stack1 = new Stack<>();
     private Stack<List<Shape>> stack2 = new Stack<>();
     
-    private String paintInfoPath = "C:\\Users\\elkarnk\\Code\\paint-mourad\\backend\\src\\main\\resources\\paintInfo.json";
+    private String paintInfoPath = "C:\\Users\\LENOVO\\Desktop\\mody-front\\front\\paint.xml";
     private Paint currentPaint = new Paint();
 
     List<Shape> draw(Shape shape) throws CloneNotSupportedException {
