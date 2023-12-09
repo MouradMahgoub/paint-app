@@ -61,6 +61,7 @@ export default {
   },
   mounted() {
     this.createKonvaStage();
+    this.clearAndDraw();
     // this.fetchShapes();
   },
   methods: {
@@ -98,7 +99,7 @@ export default {
           type:this.newShapeType,
           x:this.stage.getPointerPosition().x,
           y:this.stage.getPointerPosition().y,
-          fill:"white",
+          fill:"transparent",
           stroke:this.curColor
         };
 
@@ -120,19 +121,6 @@ export default {
         this.mousedown=true;
 
        }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
        if(e.evt.button === 0&&this.delete){
@@ -424,7 +412,7 @@ export default {
         id:1,
         x: parseInt(KonvaShape.attrs.x),
         y: parseInt(KonvaShape.attrs.y),
-        fill: 'white',
+        fill: 'transparent',
         stroke: this.curColor,
         draggable: false
       };
