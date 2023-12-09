@@ -2,6 +2,7 @@ package com.youssif.mourad.paint.app.paint;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,7 +21,7 @@ public class PaintService {
     private Stack<List<Shape>> stack1 = new Stack<>();
     private Stack<List<Shape>> stack2 = new Stack<>();
     
-    private String paintInfoPath = "C:\\Users\\LENOVO\\Desktop\\mody-front\\front\\paint.xml";
+    private static final String paintInfoPath =  Paths.get("").toAbsolutePath().resolve("src/main/resources/paintInfo.json").toString();    
     private Paint currentPaint = new Paint();
 
     List<Shape> draw(Shape shape) throws CloneNotSupportedException {
