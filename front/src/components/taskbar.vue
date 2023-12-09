@@ -187,12 +187,17 @@
     justify-content: space-around;
     width: auto;
     height: auto;
+    cursor: auto;
+    /* background-color: rgb(7, 7, 223);
+    background: rgb(235, 233, 243); */
     background-color: navy;
-    border-top-left-radius: 5px;
+    /* border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 5px; */
     padding: 5px;
+    text-align: left;
+
   }
   .btn {
     text-align: center;

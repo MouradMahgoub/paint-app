@@ -66,13 +66,17 @@
   /* Add any styling you need for the buttons here */
   .shapeActions {
     width: 100%;
+    cursor: auto;
+
     /* background: rgb(31, 6, 95); */
-    border: 1px solid black;
+    border: 1px solid rgb(219, 205, 205);
     /* border-radius: 5px; */
     display: flex;
     justify-content: center;
     padding: 10px;
     gap: 10px;
+    background: rgb(235, 233, 243);
+
 
   }
    .mybutton{

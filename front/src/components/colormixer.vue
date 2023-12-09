@@ -62,9 +62,12 @@
   
   <style>
   .WholeBar {
-    border:1px solid black;
+    border: 1px solid rgb(219, 205, 205);
     height: auto;
     align-items: center;
+    background: rgb(235, 233, 243);
+    cursor: auto;
+
     /* background:cyan; */
     /* gap: 5px; */
     /* margin-left: 50%;
@@ -72,7 +75,8 @@
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px; */
-    padding-right:10px ;
+    padding-right:9px ;
+    padding-left:2px ;
     margin: 0;
   }
   .color-bar{

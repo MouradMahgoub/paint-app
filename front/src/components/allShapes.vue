@@ -40,9 +40,11 @@
   <style scoped>
   /* Add any styling you need for the buttons here */
   .shapes {
+    cursor: auto;
+
     width: 100%;
-    /* background: rgb(31, 6, 95); */
-    border: 1px solid black;
+    background: rgb(235, 233, 243);
+    border: 1px solid rgb(219, 205, 205);
     /* border-radius: 5px; */
     display: flex;
     justify-content: center;
@@ -66,7 +68,7 @@
 
   }
 .mybutton:hover {
-  background-color: #ccc; /* Change the background color on hover */
+  background-color: #e6e4e4; /* Change the background color on hover */
 }
 .mybutton:active {
   background-color: gray; /* Change the background color while pressing */

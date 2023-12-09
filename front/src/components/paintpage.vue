@@ -495,10 +495,12 @@ export default {
 <style scoped>
 .konva-holder {
   height: 100%;
-  width: 100%;
-  border: 2px solid black;
+  width: 99.%;
+  border: 1px solid black;
+  /* padding-right:-1px  ; */
 }
 .drawingTools{
+  border: 1px solid black;
   display: flex;
 }
 </style>
