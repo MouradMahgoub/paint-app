@@ -61,6 +61,7 @@ export default {
   },
   mounted() {
     this.createKonvaStage();
+    this.clearAndDraw();
     // this.fetchShapes();
   },
   methods: {
@@ -76,7 +77,7 @@ export default {
       const viewportHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
       const stageWidth = viewportWidth * (98.8 / 100); // Replace percentageWidth with your desired percentage
-     const stageHeight = viewportHeight * (81 /100); // Replace percentageHeight with your desired percentage
+     const stageHeight = viewportHeight * (80 /100); // Replace percentageHeight with your desired percentage
       this.stage = new Konva.Stage({
      container: '.konva-holder',
      width: stageWidth,
@@ -98,7 +99,7 @@ export default {
           type:this.newShapeType,
           x:this.stage.getPointerPosition().x,
           y:this.stage.getPointerPosition().y,
-          fill:"white",
+          fill:"transparent",
           stroke:this.curColor
         };
 
@@ -120,19 +121,6 @@ export default {
         this.mousedown=true;
 
        }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
        if(e.evt.button === 0&&this.delete){
@@ -424,7 +412,7 @@ export default {
         id:1,
         x: parseInt(KonvaShape.attrs.x),
         y: parseInt(KonvaShape.attrs.y),
-        fill: 'white',
+        fill: 'transparent',
         stroke: this.curColor,
         draggable: false
       };
@@ -539,7 +527,7 @@ export default {
 
 <style scoped>
 .konva-holder {
-  height: 81vh;
+  height: 80vh;
   width:98.8vw;
   border: 1px solid black;
   /* padding-right:-1px  ; */

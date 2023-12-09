@@ -116,38 +116,36 @@
           this.show_save();
         }
         this.lo = !this.lo;
-
-        return new Promise((resolve, reject) => {
-          axios.get('http://localhost:8082/load/info')
-              .then(response => {
-                this.loadInfo = response.data;
-                resolve(response.data);
-              })
-              .catch(error => {
-                console.error('There was an error!', error);
-                reject(error);
-              });
-        });
+   
+           axios.get('http://localhost:8082/load/info')
+               .then(response => {
+                 this.loadInfo = response.data;
+                //  resolve(response.data);
+               })
+               .catch(error => {
+                 console.error('There was an error!', error);
+                //  reject(error);
+               });
       },
+
       load() {
         
         
         this.show_load();
 
        
-        return new Promise((resolve, reject) => {
           axios.post('http://localhost:8082/load/paint',this.choosenPath)
               .then(response => {
                 this.allShapes= response.data;
                 this.$emit('receiveLoad',this.allShapes);
-                resolve(response.data);
+                // resolve(response.data);
               })
               .catch(error => {
                 console.error('There was an error!', error);
-                reject(error);
+                // reject(error);
               });
         
-            });
+            
 
       },
       handleUndoShortcut(event) {

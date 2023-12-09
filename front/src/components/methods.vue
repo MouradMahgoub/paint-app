@@ -8,6 +8,7 @@
       :key="index" 
       :class="{ buttonClicked: isActionClicked(action) }"
       @click="handleActionClick(action)">
+      {{this.actionText(action)}}
       <img class="button-image" :src="require(`@/assets/${action}.png`)" alt="Logo" />
 
       </div>
@@ -59,6 +60,13 @@
 
       isActionClicked(action) {
         return this.actionType == action;
+      },
+      actionText(action){
+            if(action==='move')return 'Move';
+            if(action==='copy')return 'Copy';
+            if(action==='delete')return 'Delete';
+            if(action==='resize')return 'Resize';
+            if(action==='changeColor')return 'Fill color';
       }
     }
   };
