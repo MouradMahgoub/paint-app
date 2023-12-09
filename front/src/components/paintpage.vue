@@ -55,6 +55,8 @@ export default {
       allowInput:false,
       curAction:null,
       isDeletingNow:false,
+      mousedown:false,
+
     };
   },
   mounted() {
@@ -70,35 +72,69 @@ export default {
     },
 
     createKonvaStage() {//creating stage with events (if i click a shape then i clicked the screen it will create a shape)create line in this(special case ) 
-   
-   this.stage = new Konva.Stage({
+      const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+      const viewportHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+
+      const stageWidth = viewportWidth * (98.8 / 100); // Replace percentageWidth with your desired percentage
+     const stageHeight = viewportHeight * (81 /100); // Replace percentageHeight with your desired percentage
+      this.stage = new Konva.Stage({
      container: '.konva-holder',
-     width: window.innerWidth,
-     height: window.innerHeight,
+     width: stageWidth,
+     height: stageHeight,
    });
    this.topLayer=new Konva.Layer();
    this.layer = new Konva.Layer();
    this.stage.add(this.layer);
    this.stage.add(this.topLayer); 
 
-   this.stage.on('click', (e) => {
-      
-
-
-      const mousePos = this.stage.getPointerPosition();
-      if(e.evt.button === 0&&this.drawingShape&&this.newShapeType!='line'){
-        // console.log(parseInt(mousePos.x), parseInt(mousePos.y));
-        this.createShapeAtPosition(parseInt(mousePos.x), parseInt(mousePos.y),this.newShapeType);
-      }
-    });
-           
-
-
+    let shapebyMouse=null;
+    let KonvaShape=null;
 
 
 
     this.stage.on('mousedown', (e) => {
-         
+      if(this.drawingShape){
+        shapebyMouse={
+          type:this.newShapeType,
+          x:this.stage.getPointerPosition().x,
+          y:this.stage.getPointerPosition().y,
+          fill:"white",
+          stroke:this.curColor
+        };
+
+         if(this.newShapeType=='circle'){shapebyMouse.radius=0;}
+
+         else if(this.newShapeType=='rectangle'){shapebyMouse.width=0;shapebyMouse.height=0;}
+
+         else if(this.newShapeType=='square'){shapebyMouse.width=0;shapebyMouse.height=0;}
+
+         else if(this.newShapeType=='triangle'){shapebyMouse.radius=0;shapebyMouse.sides=3;}
+
+         else if(this.newShapeType=='ellipse'){shapebyMouse.radiusX=0;shapebyMouse.radiusY=0;}
+
+        KonvaShape=this.drawKonvaShape(shapebyMouse);
+        
+        
+        this.layer.add(KonvaShape).batchDraw();
+        
+        this.mousedown=true;
+
+       }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
        if(e.evt.button === 0&&this.delete){
                this.isDeletingNow=true;
           }
@@ -120,6 +156,42 @@ export default {
 
       this.stage.on('mousemove', (e) => {
        
+        if(this.mousedown&&this.drawingShape&&this.newShapeType!='line'){
+          const mouseX = this.stage.getPointerPosition().x;
+          const mouseY = this.stage.getPointerPosition().y;
+          const startX = KonvaShape.attrs.x;
+          const startY = KonvaShape.attrs.y;
+
+
+
+            if(this.newShapeType=='circle'||this.newShapeType=='triangle'){
+              const rise=Math.pow(mouseY-startY,2);
+              const run=Math.pow(mouseX-startX,2);
+              const newRadius=Math.sqrt(rise+run);
+            
+            KonvaShape.attrs.radius=parseInt(newRadius);
+          }
+          else if(this.newShapeType === 'rectangle' || this.newShapeType === 'square'){
+            const width = mouseX - startX;
+            const height = mouseY - startY;
+            KonvaShape.attrs.width = width;
+
+            if(this.newShapeType === 'square'){
+              KonvaShape.attrs.height=width;
+            }
+            else
+            KonvaShape.attrs.height=height;
+          
+          }
+          else if(this.newShapeType==='ellipse'){
+            const radiusX = Math.abs(mouseX - startX) / 2;
+            const radiusY = Math.abs(mouseY - startY) / 2;
+            KonvaShape.attrs.radiusX = radiusX;
+            KonvaShape.attrs.radiusY = radiusY;
+          }
+        this.layer.batchDraw(KonvaShape); 
+        }
+
         if (e.evt.button === 0&&this.drawingShape && this.newShapeType === 'line' && this.curline) {
           const mousePos = this.stage.getPointerPosition();
           // Update only the end point
@@ -132,6 +204,15 @@ export default {
       });
 
       this.stage.on('mouseup', (e) => {
+        
+        this.mousedown=false;
+        if(this.drawingShape&&this.newShapeType!='line'){
+          
+          this.updateLayer("draw",this.convertToObject(KonvaShape));
+
+        }
+
+
 
 
         if(e.evt.button === 0&&this.delete){
@@ -154,8 +235,8 @@ export default {
             };
             this.curline=null;
 
-            // console.log(555);
-            // console.log(JSON.stringify(this.shape, null, 2));
+           
+            
             this.layer.draw();
 
           this.updateLayer("draw",this.shape);
@@ -201,21 +282,6 @@ export default {
       }
     },
     
-    // fetchShapes() {
-
-    //   fetch('http://localhost:3000/allShapes')
-    //   .then((response) => response.json()) 
-    //   .then((data) => {
-    //     this.allShapes = data;
-        
-    //     this.allShapes.forEach((shape) => {
-    //       this.drawShape(shape);
-    //     });
-    //   })
-    //   .catch((err) => console.error('Error fetching shapes:', err));
-    // },
-
-
     clearAndDraw() {//clear the layer and draw the array elements again using this.drawShape 
 
       this.layer.destroyChildren();
@@ -224,31 +290,35 @@ export default {
           this.drawShape(shape);
         });
     },
-    
-    // updateShapePosition(shapeId, newX, newY) {
+   
+    drawKonvaShape(shape){
+      let newShape=null;
+      if (shape.type === 'circle') {
+        newShape = new Konva.Circle(shape);
+        
+      } else if (shape.type === 'ellipse') {
+        newShape = new Konva.Ellipse(shape);
+        
+      } else if (shape.type === 'triangle') {
+        newShape=new Konva.RegularPolygon(shape);
+        
 
-    //   this.allShapes = this.allShapes.map(shape => {
-    //   if (shape.id === shapeId) {
-    //     // console.log(newX,newY);
-    //     return { ...shape, x: newX, y: newY };
-    //   }
-    //   return shape;
-    // });
-    // },
+      } else if (shape.type === 'rectangle') {
+        newShape=new Konva.Rect(shape);
 
-    // changeShapeColor(shapeId, newColor) {
-    //  this.allShapes = this.allShapes.map(shape => {
-    //   if (shape.id === shapeId) {
-    //     return {...shape, fill: newColor};
-    //   }
-    //   return shape;
-    // });
+      } else if (shape.type === 'square') {
+        newShape=new Konva.Rect(shape);   
 
-    // // this.allShapes.forEach(shape => this.drawShape(shape)); // Redraw with new colors
-    // },
+      } else if (shape.type === 'line') {
+        newShape=new Konva.Line(shape);    
+      }
+
+
+      return newShape;
+    },
+
 
     drawShape(shape) {// (print the array ) take a shape object and convert it to element of Konva and have the events of every shape(methods)
-      // console.log(shape);
       let newShape=null;
       
       if (shape.type === 'circle') {
@@ -279,11 +349,7 @@ export default {
           if (e.evt.button === 0&&this.move) {
             newShape.draggable(true);
           }
-          // else if(e.evt.button === 0&&this.delete){
-          //      this.isDeletingNow=true;
-          //      this.updateLayer("delete",shape);
-
-          // }
+        
         });
         
       newShape.on('click', (e) => {
@@ -291,10 +357,7 @@ export default {
         if(e.evt.button === 0){
             this.shape=shape;
             
-            // if(this.delete){
-            //   this.updateLayer("delete",shape);
-            // }
-            // else 
+           
             if(this.copy){
               let tempShape=shape;
               tempShape.x+=5;
@@ -317,14 +380,12 @@ export default {
       
       newShape.on('dragstart', (e) => {
          document.body.style.cursor = 'grabbing';
-         console.log("dragStart");
             this.topLayer.add(newShape); 
             this.topLayer.draw();
           });
           
       newShape.on('dragend', (e) => {
             
-        console.log("dragend");
 
               newShape.draggable(false); 
               this.layer.add(newShape); // Move the shape back to the original layer when dragging ends
@@ -340,76 +401,61 @@ export default {
               this.updateLayer("move",shape);
           
         });
-        newShape.on('dragmove', (e) => {
-          console.log("dragmove");
+      
+      newShape.on('dragmove', (e) => {
           document.body.style.cursor = 'grabbing';
         });
 
-        newShape.on('mousemove', () => {
+      newShape.on('mousemove', () => {
           if(this.isDeletingNow){
             this.updateLayer("delete",shape);
           }
           
         });
-        // newShape.on('mouseup', () => {
-               
-        // });
         
 
 
     },
 
-
-    createShapeAtPosition(x, y, shapetype) {
-     const id = this.allShapes.length + 1; // Simple way to generate a unique id
-
-     let shapeObj = {
-        type: shapetype,
-        id: id,
-        x: x,
-        y: y,
+    convertToObject(KonvaShape){
+    
+      let shapeObj = {
+        type: KonvaShape.attrs.type,
+        id:1,
+        x: parseInt(KonvaShape.attrs.x),
+        y: parseInt(KonvaShape.attrs.y),
         fill: 'white',
         stroke: this.curColor,
         draggable: false
-
       };
-
-      switch (shapetype) {
+      switch (shapeObj.type) {
         case 'circle':
-          shapeObj.radius = 10;
+          shapeObj.radius = KonvaShape.attrs.radius ;
           break;
         case 'ellipse':
-          shapeObj.radiusX = 10;
-          shapeObj.radiusY = 25;
+          shapeObj.radiusX =parseInt(KonvaShape.attrs.radiusX);
+          shapeObj.radiusY =parseInt(KonvaShape.attrs.radiusY);
           break;
         case 'triangle':
-          shapeObj.radius = 10;
-          shapeObj.sides=3;
+          shapeObj.radius = KonvaShape.attrs.radius;
+          shapeObj.sides=KonvaShape.attrs.sides;
           break;
         case 'rectangle':
-          shapeObj.width = 100;
-          shapeObj.height = 50;
+          shapeObj.width = KonvaShape.attrs.width;
+          shapeObj.height = KonvaShape.attrs.height;
           break;
         case 'square':
-          shapeObj.width = 50;
-          shapeObj.height = 50;
+          shapeObj.width = KonvaShape.attrs.width;
+          shapeObj.height = KonvaShape.attrs.height;
           break;
       
         default:
           console.error('Unknown shape type:', shapetype);
           return;
       }
-
-      this.shape=shapeObj;
-      let temp=this.newShapeType;
-      this.clearControles()
-      this.newShapeType=temp;
-      this.drawingShape=true;
-      this.allowInput=true;
-
-
+      return shapeObj;
     },
-   
+
      receiveChange(shape) {//recive change from inputProps (resize or draw new shape)
 
         this.allowInput = false;
@@ -424,7 +470,6 @@ export default {
 
         try {
             await this.sendShapeToBack(path,shape);
-            // console.log(JSON.stringify(this.allShapes, null, 2));
 
             this.clearAndDraw();
 
@@ -432,16 +477,12 @@ export default {
             console.error('Error sending shape to back:', error);
           }
     },
-//mourad
+
     sendShapeToBack(addURL,shape) {
         return new Promise((resolve, reject) => {
           let x={};
           x.properties=shape;
 
-            console.log("sent element ")
-            console.log(JSON.stringify(x, null, 2));
-            console.log("allShapes before")
-            console.log(JSON.stringify( this.allShapes, null, 2));
         axios.post('http://localhost:8082/'+addURL, x)
           .then(response => {
 
@@ -464,6 +505,7 @@ export default {
           console.error('Error sending shape to back:', error);
         }
     },
+
     sendActionToBack(action) {
         return new Promise((resolve, reject) => {
         axios.get('http://localhost:8082/'+action)
@@ -478,12 +520,15 @@ export default {
           });
       });
     },
+    
     clear(){
       this.undo_redo_clear("clear");
     },
+
     closeInputProps(){
       this.allowInput=false;
     },
+
     load(allShapes){
       this.allShapes=allShapes;
       this.clearAndDraw();
@@ -494,13 +539,13 @@ export default {
 
 <style scoped>
 .konva-holder {
-  height: 100%;
-  width: 99.%;
+  height: 81vh;
+  width:98.8vw;
   border: 1px solid black;
   /* padding-right:-1px  ; */
 }
 .drawingTools{
-  border: 1px solid black;
+  border: 1% solid black;
   display: flex;
 }
 </style>

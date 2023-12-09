@@ -75,15 +75,16 @@
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px; */
-    padding-right:9px ;
-    padding-left:2px ;
+    padding-right:0.5vw ;
+    padding-left:0.2vw ;
     margin: 0;
   }
   .color-bar{
     display: flex;
    
     align-items: center;
-    gap: 5px;
+    /* gap: 5px; */
+    gap: 0.3vw;
     margin-left: 19px;
   }
   
@@ -94,29 +95,35 @@
   
   .preview {
     cursor: pointer;
-    height: 30px;
-    width: 30px;
+    /* height: 30px; */
+    height: 1.4vw;
+    width: 1.4vw;
+    /* width: 30px; */
     font-size: large;
-    margin-right: 20px;
-    border-top-left-radius: 5px;
+    margin-right: 1.2vw;
+    /* border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    margin-top: 15px;
+    border-bottom-right-radius: 5px; */
+    border-radius: 0.3vw;
+    border: 1px solid#000;
+    margin-top: 2vh;
   }
   
   .grid-item {
     cursor: pointer;
     border: 1px solid #000;
-    padding: 10px;
+    padding: 0.5vw;
     text-align: center;
-    height: 5px;
-    width: 5px;
+    /* height: 5px; */
+    /* width: 5px; */
     margin-left: 1%;
-    border-top-left-radius: 5px;
+    /* border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    border-bottom-right-radius: 5px; */
+    border-radius: 0.3vw;
+
   }
   .grid-item:active{
     transform: scale(0.98); 
@@ -126,8 +133,8 @@
     
     display: grid;
     grid-template-columns: repeat(10, 1fr);
-    margin-top: 15px;
-    gap: 2px;
+    margin-top: 2.5vh;
+    gap: 0.2vw;
   }
   .texts {
   display: flex;
@@ -136,7 +143,7 @@
   display: grid;
   color: darkblue;
   grid-template-columns: repeat(2, .42fr);
-  margin-right: 35px;
+  /* margin-right: 35px; */
 }
   
   .color {
@@ -155,13 +162,18 @@
     font-size: 14px;
   }
   .boxx{
+
     cursor: pointer;
     margin-left: 3%;
+    border-radius: 0.3vw;
+    width: 3vw;
+    height: 3vh;
+/* 
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    margin-top: 15px;
+    border-bottom-right-radius: 5px; */
+    margin-top: 2.5vh;
   }
   </style>
   

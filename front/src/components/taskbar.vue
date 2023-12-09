@@ -95,10 +95,11 @@
           
           // console.log(JSON.stringify({name: this.Fn , type:this.filetype , path:this.Fp}, null, 2));
            let x ={name: this.Fn , type:this.filetype , path:this.Fp+"\\"+this.Fn+"."+ this.fliletype};
-            console.log(JSON.stringify(x, null, 2));
-          axios.post('http://localhost:8082/save', x)
-              .then(response => {
+           console.log(JSON.stringify(x, null, 2));
+           axios.post('http://localhost:8082/save', x)
+           .then(response => {
              
+             console.log(222222222);
                 this.allShapes = response.data;
                 resolve(response.data);
               })
@@ -133,7 +134,7 @@
         
         this.show_load();
 
-        console.lo
+       
         return new Promise((resolve, reject) => {
           axios.post('http://localhost:8082/load/paint',this.choosenPath)
               .then(response => {
@@ -183,7 +184,7 @@
   }
   
   .taskbar {
-    align-content: center;
+    align-content: left ;
     justify-content: space-around;
     width: auto;
     height: auto;
@@ -195,23 +196,29 @@
     border-top-right-radius: 5px;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px; */
-    padding: 5px;
+    /* padding: 5px; */
+    padding: 0.5vh  0.3vw;
     text-align: left;
 
   }
   .btn {
     text-align: center;
-    font-size: 14px;
+    /* font-size: 14px; */
+    font-size: 1.1vw;
     color: white;
     width: 7%;
     height: auto;
-    padding: 9px 16px;
+    /* padding: 9px 16px; */
+    padding: 1vh 1.2vw;
+    
     background-color: dodgerblue;
-    border-top-left-radius: 5px;
+    /* border-top-left-radius: 5px;
     border-top-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    align-content: center;
+    border-bottom-left-radius: 5px; */
+    /* border-bottom-right-radius: 5px; */
+    border-radius: 0.3vw;
+
+    align-content:center;
     font: bold;
     cursor: pointer;
   }
@@ -219,17 +226,20 @@
     background-color: rgb(0, 0, 0);
   }
   .savebox {
+    /* height: 2vh; */
+    display: flex;
     border: 2px solid #5a7e5b;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 0.5vw;
+    /* margin: 1vh 0; */
+    cursor: auto;
     background-color: #f8f8f8;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
   .loads {
     border: 2px solid #5a7e5b;
-    padding: 10px;
-    margin: 10px 0;
+    padding: 0.5vw;
+    /* margin: 10px 0; */
     background-color: #f8f8f8;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -240,11 +250,11 @@
     height: 8%;
   }
   #closeSave {
-    margin-left: 5px;
+    margin-left: 1vw;
   }
   #SaveDone {
-    margin-left: 5px;
-  }
+    margin-left: 1vw;
+    }
   .fa fa-save {
     margin-right: 10%;
   }
