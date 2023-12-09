@@ -441,12 +441,12 @@ export default {
           shapeObj.sides=KonvaShape.attrs.sides;
           break;
         case 'rectangle':
-          shapeObj.width = KonvaShape.attrs.width;
-          shapeObj.height = KonvaShape.attrs.height;
+          shapeObj.width = parseInt(KonvaShape.attrs.width);
+          shapeObj.height = parseInt(KonvaShape.attrs.height);
           break;
         case 'square':
-          shapeObj.width = KonvaShape.attrs.width;
-          shapeObj.height = KonvaShape.attrs.height;
+          shapeObj.width = parseInt(KonvaShape.attrs.width);
+          shapeObj.height = parseInt(KonvaShape.attrs.height);
           break;
       
         default:
