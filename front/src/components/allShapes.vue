@@ -42,14 +42,15 @@
   .shapes {
     cursor: auto;
 
-    width: 100%;
+    width: 76vw;
+    /* height: 7vh; */
     background: rgb(235, 233, 243);
-    border: 1px solid rgb(219, 205, 205);
+    border: 1% solid rgb(219, 205, 205);
     /* border-radius: 5px; */
     display: flex;
     justify-content: center;
-    padding: 10px;
-    gap: 10px;
+    padding: 0.695vw;
+    gap: 0.695vw;
 
   }
   
@@ -59,11 +60,11 @@
     align-items: center; 
     background: rgb(242, 232, 232);
     font-size: bold;
-    border-radius: 10px;
+    border-radius: 0.695vw;
     cursor: pointer;
-    border: 1px solid #b2acac;
-    padding: 10px;
-    width: 100%;
+    border: 1% solid #b2acac;
+    padding: 0.695vw;
+    /* width: 100%; */
 
 
   }
@@ -76,12 +77,12 @@
 .button-image {
   /* max-width: 60px;
   max-height: 60px; */
-  width: 70%;
-  height: 70%;
+  width: 2vw;
+  height: 2vw;
   /* border: 1px solid black; */
 }
 .buttonClicked {
-  border: 1px solid blue;
+  border: 1% solid blue;
   background-color: rgb(186, 189, 248); /* Define your desired background color */
   /* cursor: crosshair; */
   

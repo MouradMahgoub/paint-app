@@ -20,7 +20,7 @@
   import changeColorCursor from '@/assets/changeColorCursor.png';
   import deleteCursor from '@/assets/deleteCursor.png';
   import resizeCursor from '@/assets/resizeCursor.png';
-  import copyCursor from '@/assets/copyCursor.png';
+  import copyCursor from '@/assets/copyCursor.svg';
 
   export default {
     name: 'methods',
@@ -46,7 +46,9 @@
           document.body.style.cursor = `url(${deleteCursor}), auto`;
         }
         else if(action=='copy'){
-          document.body.style.cursor = `url(${copyCursor}), auto`;
+          document.body.style.cursor = 'pointer';
+          // document.body.style.cursor = `url(${copyCursor}), auto`;
+         
         }
         else if(action=='resize'){
           document.body.style.cursor = `url(${resizeCursor}), auto`;
@@ -65,7 +67,8 @@
   <style >
   /* Add any styling you need for the buttons here */
   .shapeActions {
-    width: 100%;
+    width: 76vw;
+    /* height: 7vh; */
     cursor: auto;
 
     /* background: rgb(31, 6, 95); */
@@ -73,8 +76,8 @@
     /* border-radius: 5px; */
     display: flex;
     justify-content: center;
-    padding: 10px;
-    gap: 10px;
+    padding: 0.695vw;
+    gap: 0.695vw;
     background: rgb(235, 233, 243);
 
 
@@ -88,7 +91,7 @@
     border-radius: 10px;
     cursor: pointer;
     border: 1px solid #b2acac;
-    padding: 10px;
+    padding: 0.695vw;
     width: 100%;
 
 
@@ -102,8 +105,8 @@
 .button-image {
   /* max-width: 60px;
   max-height: 60px; */
-  width:50%;
-  height: 50%;
+  width: 2vw;
+  height: 2vw;
   /* border: 1px solid black; */
 }
 .buttonClicked {
