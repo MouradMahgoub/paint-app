@@ -77,7 +77,7 @@ export default {
       const viewportHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
       const stageWidth = viewportWidth * (98.8 / 100); // Replace percentageWidth with your desired percentage
-     const stageHeight = viewportHeight * (81 /100); // Replace percentageHeight with your desired percentage
+     const stageHeight = viewportHeight * (80 /100); // Replace percentageHeight with your desired percentage
       this.stage = new Konva.Stage({
      container: '.konva-holder',
      width: stageWidth,
@@ -527,7 +527,7 @@ export default {
 
 <style scoped>
 .konva-holder {
-  height: 81vh;
+  height: 80vh;
   width:98.8vw;
   border: 1px solid black;
   /* padding-right:-1px  ; */
