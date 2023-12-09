@@ -1,4 +1,4 @@
-package com.youssif.mourad.paint.app.paint;
+package com.youssif.mourad.paint.app.paint.models;
 import java.util.Objects;
 
 

@@ -1,6 +1,7 @@
-package com.youssif.mourad.paint.app.paint;
+package com.youssif.mourad.paint.app.paint.models;
 
 import javax.xml.bind.annotation.XmlRootElement;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

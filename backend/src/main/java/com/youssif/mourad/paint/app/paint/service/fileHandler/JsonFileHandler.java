@@ -1,17 +1,15 @@
-package com.youssif.mourad.paint.app.paint.fileHandler;
+package com.youssif.mourad.paint.app.paint.service.fileHandler;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.youssif.mourad.paint.app.paint.Paint;
-import com.youssif.mourad.paint.app.paint.PaintInfo;
-import com.youssif.mourad.paint.app.paint.Shape;
-import com.youssif.mourad.paint.app.paint.factory.ShapeFactory;
+import com.youssif.mourad.paint.app.paint.models.Paint;
+import com.youssif.mourad.paint.app.paint.models.PaintInfo;
+import com.youssif.mourad.paint.app.paint.service.ShapeFactory;
 
 public class JsonFileHandler {
     public static void save(Paint paint, String path) throws IOException{

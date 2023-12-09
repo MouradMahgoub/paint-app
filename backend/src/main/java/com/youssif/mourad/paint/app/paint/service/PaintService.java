@@ -1,4 +1,4 @@
-package com.youssif.mourad.paint.app.paint;
+package com.youssif.mourad.paint.app.paint.service;
 
 import java.io.File;
 import java.io.IOException;
@@ -12,8 +12,11 @@ import javax.xml.bind.annotation.XmlSeeAlso;
 
 import org.springframework.stereotype.Service;
 
-import com.youssif.mourad.paint.app.paint.fileHandler.JsonFileHandler;
-import com.youssif.mourad.paint.app.paint.fileHandler.XmlFileHandler;
+import com.youssif.mourad.paint.app.paint.models.Paint;
+import com.youssif.mourad.paint.app.paint.models.PaintInfo;
+import com.youssif.mourad.paint.app.paint.models.Shape;
+import com.youssif.mourad.paint.app.paint.service.fileHandler.JsonFileHandler;
+import com.youssif.mourad.paint.app.paint.service.fileHandler.XmlFileHandler;
 
 @Service
 @XmlSeeAlso({ArrayList.class, LinkedList.class})
@@ -24,7 +27,7 @@ public class PaintService {
     private static final String paintInfoPath =  Paths.get("").toAbsolutePath().resolve("src/main/resources/paintInfo.json").toString();    
     private Paint currentPaint = new Paint();
 
-    List<Shape> draw(Shape shape) throws CloneNotSupportedException {
+    public List<Shape> draw(Shape shape) throws CloneNotSupportedException {
         stack2.clear();
         List<Shape> currentState = new ArrayList<>(currentPaint.getShapes());
         Shape clonedShape = shape.clone();
@@ -38,9 +41,7 @@ public class PaintService {
         return currentPaint.getShapes();
     }
 
-
-
-    List<Shape> copy(Shape shape) throws CloneNotSupportedException {
+    public List<Shape> copy(Shape shape) throws CloneNotSupportedException {
         stack2.clear();
         List<Shape> currentState = new ArrayList<>(currentPaint.getShapes());
         Shape clonedShape = shape.clone();
@@ -53,16 +54,12 @@ public class PaintService {
         stack1.push(currentState);
         return currentState;
     }
-    List<Shape> move(Shape shape) throws CloneNotSupportedException {
+    public List<Shape> move(Shape shape) throws CloneNotSupportedException {
         stack2.clear();
-
-        // Create a deep copy of the list of shapes
         List<Shape> currentState = new ArrayList<>();
         Shape movedShape = null;
         for (Shape originalShape : currentPaint.getShapes()) {
             Shape clonedShape = originalShape.clone();
-
-            // Update the fill and stroke properties of the target shape
             if (clonedShape.getId() == shape.getId()) {
                 clonedShape.setX(shape.getX());
                 clonedShape.setY(shape.getY());
@@ -74,14 +71,12 @@ public class PaintService {
         if (movedShape != null) {
             currentState.add(movedShape);
         }
-
         currentPaint.setShapes(new ArrayList<>(currentState));
-        // Push a deep copy of the currentState onto stack1
         stack1.push(new ArrayList<>(currentState));
 
         return currentState;
     }
-    List<Shape> resize(Shape shape) {
+    public List<Shape> resize(Shape shape) {
         stack2.clear();
         List<Shape> currentState = new ArrayList<>(currentPaint.getShapes());
         for(Shape targetShape : currentState){
@@ -94,37 +89,29 @@ public class PaintService {
         stack1.push(currentState);
         return currentState;
     }
-    List<Shape> refill(Shape shape) throws CloneNotSupportedException {
+    public List<Shape> refill(Shape shape) throws CloneNotSupportedException {
         stack2.clear();
-
-        // Create a deep copy of the list of shapes
         List<Shape> currentState = new ArrayList<>();
         for (Shape originalShape : currentPaint.getShapes()) {
             Shape clonedShape = originalShape.clone();
-
-            // Update the fill and stroke properties of the target shape
             if (clonedShape.getId() == shape.getId()) {
                 clonedShape.setFill(shape.getFill());
                 clonedShape.setStroke(shape.getStroke());
             }
-
             currentState.add(clonedShape);
         }
-
         currentPaint.setShapes(new ArrayList<>(currentState));
-        // Push a deep copy of the currentState onto stack1
         stack1.push(new ArrayList<>(currentState));
-
         return currentState;
     }
 
-    List<Shape> delete(Shape shape) {
+    public List<Shape> delete(Shape shape) {
         stack2.clear();
         currentPaint.getShapes().remove(shape);
         stack1.push(new ArrayList<> (currentPaint.getShapes()));
         return currentPaint.getShapes();
     }
-    List<Shape> undo() {
+    public List<Shape> undo() {
         if (!stack1.isEmpty()) {
             stack2.push(new ArrayList<>(stack1.pop()));
         }
@@ -137,7 +124,7 @@ public class PaintService {
         currentPaint.setShapes(back);
         return back;
     }
-    List<Shape> redo() {
+    public List<Shape> redo() {
 
         List<Shape> back;
         if(stack2.isEmpty()){
@@ -149,11 +136,11 @@ public class PaintService {
         }
         return back;
     }
-    List<Shape> clear(){
+    public List<Shape> clear(){
         currentPaint = new Paint();
         return currentPaint.getShapes();
     }
-    List<Shape> save(PaintInfo paintInfo) throws Exception {
+    public List<Shape> save(PaintInfo paintInfo) throws Exception {
         List<PaintInfo> paintsInfo = new ArrayList<PaintInfo>();
         if((new File(paintInfoPath)).length() > 0) 
             paintsInfo = JsonFileHandler.loadInfo(paintInfoPath);
@@ -168,10 +155,8 @@ public class PaintService {
             return currentPaint.getShapes();
         }
     }
-    List<Shape> load(PaintInfo paintInfo)throws Exception {
-        // String type = requestObject.getProperties().get("type").toString();
-        // String path = requestObject.getProperties().get("path").toString();
-        if(paintInfo.getType().toLowerCase().equals("json")){
+    public List<Shape> load(PaintInfo paintInfo)throws Exception {
+        if(paintInfo.getType().toString().toLowerCase().equals("json")){
             currentPaint = JsonFileHandler.load(paintInfo.getPath());
             return currentPaint.getShapes(); 
         }else{
@@ -179,7 +164,7 @@ public class PaintService {
             return currentPaint.getShapes();
         }
     }
-    List<PaintInfo> loadInfo () throws IOException {
+    public List<PaintInfo> loadInfo () throws IOException {
         return JsonFileHandler.loadInfo(paintInfoPath);
     }
 

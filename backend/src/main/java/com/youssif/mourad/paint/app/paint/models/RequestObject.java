@@ -1,9 +1,9 @@
-package com.youssif.mourad.paint.app.paint;
+package com.youssif.mourad.paint.app.paint.models;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-import com.youssif.mourad.paint.app.paint.factory.ShapeFactory;
+import com.youssif.mourad.paint.app.paint.service.ShapeFactory;
 
 public class RequestObject {
     private Map<String, Object> properties = new HashMap<String, Object>();

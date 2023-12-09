@@ -1,18 +1,11 @@
-package com.youssif.mourad.paint.app.paint.factory;
+package com.youssif.mourad.paint.app.paint.service;
 
-import java.awt.*;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
-import com.youssif.mourad.paint.app.paint.Shape;
-import com.youssif.mourad.paint.app.paint.shapes.Circle;
-import com.youssif.mourad.paint.app.paint.shapes.Rectangle;
-import com.youssif.mourad.paint.app.paint.shapes.Square;
-import com.youssif.mourad.paint.app.paint.shapes.Triangle;
-import com.youssif.mourad.paint.app.paint.shapes.Ellipse;
-import com.youssif.mourad.paint.app.paint.shapes.*;
-import com.youssif.mourad.paint.app.paint.shapes.Rectangle;
+import com.youssif.mourad.paint.app.paint.models.Shape;
+import com.youssif.mourad.paint.app.paint.models.shapeModels.*;
+import com.youssif.mourad.paint.app.paint.models.shapeModels.Rectangle;
 
 
 

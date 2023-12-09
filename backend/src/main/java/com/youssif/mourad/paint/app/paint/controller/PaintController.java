@@ -1,10 +1,15 @@
-package com.youssif.mourad.paint.app.paint;
+package com.youssif.mourad.paint.app.paint.controller;
 
 import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import com.youssif.mourad.paint.app.paint.models.PaintInfo;
+import com.youssif.mourad.paint.app.paint.models.RequestObject;
+import com.youssif.mourad.paint.app.paint.models.Shape;
+import com.youssif.mourad.paint.app.paint.service.PaintService;
 
 @RestController
 @CrossOrigin

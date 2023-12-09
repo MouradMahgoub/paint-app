@@ -1,6 +1,6 @@
-package com.youssif.mourad.paint.app.paint.shapes;
+package com.youssif.mourad.paint.app.paint.models.shapeModels;
 
-import com.youssif.mourad.paint.app.paint.Shape;
+import com.youssif.mourad.paint.app.paint.models.Shape;
 
 import lombok.Builder;
 
