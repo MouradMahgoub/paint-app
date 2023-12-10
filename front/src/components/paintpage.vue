@@ -60,19 +60,25 @@ export default {
     };
   },
   mounted() {
-    this.createKonvaStage();
-    this.clearAndDraw();
+    this.startUp();
+    // this.createKonvaStage();
+    // this.clearAndDraw();
     // this.fetchShapes();
   },
   methods: {
-
+    
+  async startUp() {
+    await this.createKonvaStage();
+    // this.undo_redo_clear('undo');//we van raplace it be fetching shapes from backend
+    this.undo_redo_clear('redo');
+  },
     addNewShape(shapeType){//take shape name if i click on circle/triangle ...and make update this.newShapeName
       this.clearControles();
       this.drawingShape=true;
       this.newShapeType=shapeType;
     },
 
-    createKonvaStage() {//creating stage with events (if i click a shape then i clicked the screen it will create a shape)create line in this(special case ) 
+    async createKonvaStage() {//creating stage with events (if i click a shape then i clicked the screen it will create a shape)create line in this(special case ) 
       const viewportWidth = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
       const viewportHeight = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
 
@@ -91,7 +97,14 @@ export default {
     let shapebyMouse=null;
     let KonvaShape=null;
 
-
+    //  this.stage.on('click',(e)=>{
+    //   if(e.currentTarget === this.stage&&e.evt.button === 0&&this.changeColor){
+       
+    //     var container = this.stage.container();
+    //     container.style.backgroundColor = this.curColor;
+    //     this.layer.draw();
+    //       }
+    //  });
 
     this.stage.on('mousedown', (e) => {
       if(this.drawingShape){
@@ -270,7 +283,7 @@ export default {
       }
     },
     
-    clearAndDraw() {//clear the layer and draw the array elements again using this.drawShape 
+    async  clearAndDraw() {//clear the layer and draw the array elements again using this.drawShape 
 
       this.layer.destroyChildren();
 
@@ -520,7 +533,7 @@ export default {
     load(allShapes){
       this.allShapes=allShapes;
       this.clearAndDraw();
-    }
+    },
  }
 };
 </script>

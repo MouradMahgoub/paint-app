@@ -6,25 +6,25 @@
           <!-- <button class="close-button" @click="closeComponent">X</button> -->
           <div class="ShowError" v-if="error">Invalid dimentions ! </div>
            
-            <label v-if="shape.type === 'circle'" for="radiusInput">Radius:</label>
+            <label v-if="shape.type === 'circle'" for="radiusInput">Radius (px):</label>
             <input v-if="shape.type === 'circle'" id="radiusInput" v-model.number="shape.radius" placeholder="Enter Radius">
 
-            <label v-if="shape.type === 'triangle'" for="radiusInput">Side length:</label>
+            <label v-if="shape.type === 'triangle'" for="radiusInput">Side length (px):</label>
             <input v-if="shape.type === 'triangle'" id="radiusInput" v-model.number="this.sidelenght" placeholder="Enter Side length:">
 
-            <label v-if="shape.type === 'rectangle' " for="widthInput">Width:</label>
+            <label v-if="shape.type === 'rectangle' " for="widthInput">Width (px):</label>
             <input v-if="shape.type === 'rectangle'" id="widthInput" v-model.number="shape.width" placeholder="Enter Width">
             
-            <label v-if="shape.type === 'rectangle'" for="heightInput">Height:</label>
+            <label v-if="shape.type === 'rectangle'" for="heightInput">Height (px):</label>
             <input v-if="shape.type === 'rectangle'" id="heightInput" v-model.number="shape.height" placeholder="Enter Height">
             
-            <label v-if="shape.type === 'square' " for="widthInput">Side length:</label>
+            <label v-if="shape.type === 'square' " for="widthInput">Side length (px):</label>
             <input v-if="shape.type === 'square'" id="widthInput" v-model.number="shape.width" placeholder="Enter Side length">
 
-            <label v-if="shape.type === 'ellipse'" for="radiusX">radiusX:</label>
+            <label v-if="shape.type === 'ellipse'" for="radiusX">radiusX (px):</label>
             <input v-if="shape.type === 'ellipse'" id="radiusX" v-model.number="shape.radiusX" placeholder="Enter radiusX">
 
-            <label v-if="shape.type === 'ellipse'" for="radiusY">radiusY:</label>
+            <label v-if="shape.type === 'ellipse'" for="radiusY">radiusY (px):</label>
             <input v-if="shape.type === 'ellipse'" id="radiusY" v-model.number="shape.radiusY" placeholder="Enter radiusX">
             
           <button @click="saveShape">Save</button>
