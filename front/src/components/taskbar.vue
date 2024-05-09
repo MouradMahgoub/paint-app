@@ -99,7 +99,7 @@
            axios.post('http://localhost:8082/save', x)
            .then(response => {
              
-            //  console.log(222222222);
+             console.log(222222222);
                 this.allShapes = response.data;
                 resolve(response.data);
               })

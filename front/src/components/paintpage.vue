@@ -213,15 +213,12 @@ export default {
 
         }
 
-
-
-
         if(e.evt.button === 0&&this.delete){
                this.isDeletingNow=false;
-          }
+        }
 
 
-          if (this.drawingShape && this.newShapeType === 'line' && this.curline) {
+        if (this.drawingShape && this.newShapeType === 'line' && this.curline) {
              
     
             this.shape = {stroke: this.curline.stroke()
@@ -241,7 +238,7 @@ export default {
             this.layer.draw();
 
           this.updateLayer("draw",this.shape);
-          }
+        }
        
       });
    

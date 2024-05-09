@@ -58,6 +58,7 @@ public class PaintController {
     }
     @PostMapping("/save")
     public List<Shape> save(@RequestBody PaintInfo paintInfo) throws Exception {
+        System.out.println(paintInfo);
         return paintService.save(paintInfo);
     }
     @GetMapping("/load/info")
