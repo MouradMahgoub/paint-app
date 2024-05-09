@@ -1,5 +1,4 @@
 # Paint Website
-
 ## Project Overview
 This digital painting website serves as an interactive platform for creating, modifying, and saving digital artworks. It offers a range of tools and features that enhance the user experience, enabling the creation of diverse shapes and patterns with custom colors.
 
