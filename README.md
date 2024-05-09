@@ -6,9 +6,9 @@
 
 This digital painting website serves as an interactive platform for creating, modifying, and saving digital artworks. It offers a range of tools and features that enhance the user experience, enabling the creation of diverse shapes and patterns with custom colors.
 
-![Untitled](Paint%20Website%209deabd37f05a4fbdb959d3ee4e1b9637/Untitled.png)
+![Untitled](assets/Untitled.png)
 
-[Untitled](Paint%20Website%209deabd37f05a4fbdb959d3ee4e1b9637/Untitled.mp4)
+[Untitled](assets/Untitled.mp4)
 
 ## The Design
 
@@ -44,6 +44,10 @@ This digital painting website serves as an interactive platform for creating, mo
 - Each shape is encapsulated in its own class, inheriting from the `Shape` class.
 - Introduced a `PaintController` to facilitate interactions with the frontend.
 - Added a `RequestObject` class for handling incoming data via `@PostMapping` from the frontend.
+
+## UML Class Diagram
+
+![Untitled](assets/Untitled1.png)
 
 ## User Interface Features
 
