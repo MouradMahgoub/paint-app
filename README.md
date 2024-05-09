@@ -8,7 +8,7 @@ This digital painting website serves as an interactive platform for creating, mo
 
 ![Untitled](assets/Untitled.png)
 
-[Untitled](assets/Untitled.mp4)
+![Untitled](assets/Untitled.mp4)
 
 ## The Design
 
