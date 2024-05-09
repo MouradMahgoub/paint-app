@@ -24,7 +24,7 @@ public class PaintService {
     private Stack<List<Shape>> stack1 = new Stack<>();
     private Stack<List<Shape>> stack2 = new Stack<>();
     
-    private static final String paintInfoPath =  Paths.get("").toAbsolutePath().resolve("src/main/resources/paintInfo.json").toString();    
+    private static final String paintInfoPath =  Paths.get("").toAbsolutePath().resolve("backend/src/main/resources/paintInfo.json").toString();    
     private Paint currentPaint = new Paint();
 
     public List<Shape> draw(Shape shape) throws CloneNotSupportedException {
@@ -148,6 +148,7 @@ public class PaintService {
         JsonFileHandler.saveInfo(paintsInfo, paintInfoPath);
 
         if(paintInfo.getType().toString().toLowerCase().equals("json")){
+            System.out.println(paintInfo.getPath().toString());
             JsonFileHandler.save(currentPaint, paintInfo.getPath().toString());
             return currentPaint.getShapes(); 
         }else{
