@@ -1,14 +1,11 @@
 # Paint Website
 
 ## Project Overview
-
----
-
 This digital painting website serves as an interactive platform for creating, modifying, and saving digital artworks. It offers a range of tools and features that enhance the user experience, enabling the creation of diverse shapes and patterns with custom colors.
 
 ![Untitled](assets/Untitled.png)
 
-![Untitled](assets/Untitled.mp4)
+
 
 ## The Design
 
@@ -20,8 +17,6 @@ This digital painting website serves as an interactive platform for creating, mo
 - **Dynamic Cursors**: The mention of dynamic cursors that change according to the tool selected can significantly enhance the user experience by providing visual feedback on the selected function, although this feature isn’t visible from the screenshot alone
 
 ## Design Patterns Used
-
----
 
 ### Factory Design Pattern
 
