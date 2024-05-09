@@ -5,6 +5,7 @@ This digital painting website serves as an interactive platform for creating, mo
 
 ![Untitled](assets/Untitled.png)
 
+https://github.com/MouradMahgoub/paint-app/assets/119951925/d01840c3-30fa-49a0-ba2e-c76715847bc3
 
 
 ## The Design
