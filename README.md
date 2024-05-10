@@ -6,7 +6,6 @@ This digital painting website serves as an interactive platform for creating, mo
 
 https://github.com/MouradMahgoub/paint-app/assets/119951925/d01840c3-30fa-49a0-ba2e-c76715847bc3
 
-
 ## The Design
 
 - **Minimalist Design**: The interface employs a minimalist approach with clear, straightforward icons that are easily recognizable. This simplicity makes it approachable for users of all skill levels.
